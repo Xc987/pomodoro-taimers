@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title id="title">Pomodoro timers</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body onload="checkdata()">
+  <div id="navbar">
+    <h2 id="title1">Pomodoro timers</h2>
+    <ul>
+      <li><a id="more1" onclick="togglePopup1()">Statistika</a></li>
+      <li><a id="more2" onclick="togglePopup()">Iestatījumi</a></li>
+    </ul>
+  </div>
+  <hr>
+  <div id="settingsPopup" class="popup" id="popup">
+    <span style="color: red;" class="close" onclick="togglePopup()">✕</span>
+    <h2 style="text-align: center;">Iestatījumi</h2>
+    <hr>
+    <p>Pomodoro laiks: <input min="1" max="60" value="25" type="number" class="inputtime" id="pomotime"></p>
+    <p>Īsās atpūtas laiks: <input min="1" max="60" value="5" type="number" class="inputtime" id="shorttime1"></p>
+    <p>Ilgās atpūtas laiks: <input min="1" max="60" value="15" type="number" class="inputtime" id="longtime1"></p>
+    <p>Ilgās atpūtas intervāls: <input value="4" type="number" class="inputtime" id="interval"></p>
+    <p style="font-weight: bold;" id="maxinputmessage"></p>
+    <div class="checkbox-wrapper-2">
+      <p>Gaišais režīms: <input type="checkbox" class="sc-gJwTLC ikxBAC" id="themech" onclick="themechange()"></p>
+    </div>
+    <div class="checkbox-wrapper-2">
+      <p>Izmantot dažādas krāsas: <input type="checkbox" class="sc-gJwTLC ikxBAC" id="cyclecolor" onclick="colorchange()"></p>
+    </div>
+    <div class="checkbox-wrapper-2">
+      <p>Izmantot paziņojumus: <input type="checkbox" class="sc-gJwTLC ikxBAC" id="notifications" onclick="enablenotifications()">
+      </p>
+      <p style="font-weight: bold;" id="notificationmessage"></p>
+      <p>Pauzēt pēc timera beigšanas: <input type="checkbox" class="sc-gJwTLC ikxBAC" id="pause" onclick="enablepause()">
+      </p>
+      <hr>
+      <p style="text-align: center; font-size: 12px;">No 1min līdz 1h</p>
+    </div>
+
+
+  </div>
+  <div id="morePopup" class="popup1" id="popup1">
+    <span style="color: red;" class="close" onclick="togglePopup1()">✕</span>
+    <h2 style="text-align: center;">Statistika</h2>
+    <hr>
+    <p id="focustime">Kopējias fokussa laiks: 00:00:00</p>
+    <p id="pausetime">Kopējais atpūtas laiks: 00:00:00</p>
+    <p id="focustimevid">Vidējais fokussa laiks: 00:00</p>
+    <p id="pausetimevid">Vidējais atpūtas laiks: 00:00</p>
+    <p id="focuscycles">Kopējie fokussa cikli</p>
+    <p id="pausecycles">Kopējie atpūtas cikli</p>
+    <button class="delbutton" onclick="deletedata()">Dzēst datus</button>
+    <p style="text-align: center; font-size: 12px;">Ja dati nerādas, izdzēsiet datus.</p>
+    <hr>
+    <p style="text-align: center; font-size: 12px;">HH:MM:SS</p>
+  </div>
+  <div id="overlay" class="overlay" onclick="togglePopup()"></div>
+  <div id="overlay1" class="overlay" onclick="togglePopup1()"></div>
+  <div id="sub">
+    <div id="main">
+      <div id="buttons">
+        <button id="Pomodoro" class="button" onclick="pomodoro()">Pomodoro</button>
+        <button id="Short" class="button" style="background-color: #1E1F24;" onclick="short()">Īsa atpūta</button>
+        <button id="Long" class="button" style="background-color: #1E1F24;" onclick="long()">Ilga atpūta</button>
+      </div>
+      <div>
+        <p style="padding-bottom: 0px;" id="timervalue">25:00</p>
+        <p id="cyclecounter">Atlikušie cikli: 4</p>
+        <div id="progressbar"><div style="border-top-style: solid; border-top-width: 4px; width: 12.79%;border-bottom-width: 4px;border-bottom-style: solid;border-left-width: 4px;border-left-style: solid;border-right-width: 4px;border-right-style: solid;" id="bar"></div></div>
+      </div>
+      <div>
+        <button class="restart" id="restartbutton" onclick="restartimer()">↺</button>
+        <button class="start" id="startbutton" onclick="starttimer()">Sākt</button>
+        <button class="next" id="nextbutton" onclick="next()">›</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
